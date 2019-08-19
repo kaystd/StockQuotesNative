@@ -8,26 +8,26 @@
  * @format
  */
 
-import React, {Fragment} from 'react';
+import React, {Fragment, ReactElement} from 'react'
 import {
   SafeAreaView,
-  StyleSheet,
   ScrollView,
-  View,
-  Text,
   StatusBar,
-} from 'react-native';
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native'
 
 import {
-  Header,
-  LearnMoreLinks,
   Colors,
   DebugInstructions,
+  Header,
+  LearnMoreLinks,
   ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+} from 'react-native/Libraries/NewAppScreen'
 
-const App = () => {
-  const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
+const App = (): ReactElement => {
+  const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null
 
   return (
     <Fragment>
@@ -73,37 +73,16 @@ const App = () => {
         </ScrollView>
       </SafeAreaView>
     </Fragment>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  body: {
+    backgroundColor: Colors.white,
   },
   engine: {
     position: 'absolute',
     right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
   },
   footer: {
     color: Colors.dark,
@@ -113,6 +92,27 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     textAlign: 'right',
   },
-});
+  highlight: {
+    fontWeight: '700',
+  },
+  scrollView: {
+    backgroundColor: Colors.lighter,
+  },
+  sectionContainer: {
+    marginTop: 32,
+    paddingHorizontal: 24,
+  },
+  sectionDescription: {
+    color: Colors.dark,
+    fontSize: 18,
+    fontWeight: '400',
+    marginTop: 8,
+  },
+  sectionTitle: {
+    color: Colors.black,
+    fontSize: 24,
+    fontWeight: '600',
+  },
+})
 
-export default App;
+export default App

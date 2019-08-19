@@ -1,0 +1,12 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "quotemark": [true, "single", "jsx-double"],
+    "semicolon": [true, "never"],
+    "typedef": [true, "call-signature", "arrow-call-signature", "parameter"]
+  }
+}
