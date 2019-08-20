@@ -6,6 +6,7 @@
   ],
   "rules": {
     "quotemark": [true, "single", "jsx-double"],
+    "interface-name": false,
     "semicolon": [true, "never"],
     "typedef": [true, "call-signature", "arrow-call-signature", "parameter"]
   }
