@@ -1,8 +1,8 @@
 import React, { Fragment, ReactElement } from 'react'
 import { StyleSheet, Text, TextStyle, View } from 'react-native'
 
+import { Quote } from '../../stores/QuotesStore'
 import commonStyles from '../styles'
-import { Quote } from './index'
 
 export default ({ quotes }: { quotes: Quote[] }): ReactElement => {
 

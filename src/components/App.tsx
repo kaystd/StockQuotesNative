@@ -1,6 +1,8 @@
-import React from 'react'
+import { Provider } from 'mobx-react'
+import React, { ReactElement } from 'react'
 import { createAppContainer, createMaterialTopTabNavigator } from 'react-navigation'
 
+import store from '../stores/QuotesStore'
 import AboutScreen from './About'
 import QuotesScreen from './Quotes'
 import styles from './styles'
@@ -17,4 +19,10 @@ const TabNavigator = createMaterialTopTabNavigator(
   }
 )
 
-export default createAppContainer(TabNavigator)
+const App = createAppContainer(TabNavigator)
+
+export default (): ReactElement => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+)

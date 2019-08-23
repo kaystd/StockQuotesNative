@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import {Button, StyleSheet, Text, View} from 'react-native'
+import { Button, StyleSheet, Text, View } from 'react-native'
 
 interface Props {
   navigation: {
