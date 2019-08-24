@@ -1,7 +1,7 @@
 import React, {Fragment, ReactElement} from 'react'
 import {StyleSheet, Text, View} from 'react-native'
 
-import commonStyles, { blue } from '../styles'
+import commonStyles, { colors } from '../styles'
 import { styles as bodyStyles } from './TableBody'
 
 export default (): ReactElement => (
@@ -33,7 +33,7 @@ export default (): ReactElement => (
 
 const styles = StyleSheet.create({
   text: {
-    color: blue,
+    color: colors.blue,
     fontWeight: 'bold',
   },
 })

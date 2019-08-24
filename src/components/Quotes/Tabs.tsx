@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react'
 import {Button, StyleSheet, View} from 'react-native'
 
-import { tabValue } from './index'
+import { TabValue } from './index'
 
 interface Props {
-  active: tabValue,
-  handleValueChange: (value: tabValue) => () => void,
+  active: TabValue,
+  handleValueChange: (value: TabValue) => () => void,
 }
 
 export default (props: Props): ReactElement => {
@@ -14,7 +14,7 @@ export default (props: Props): ReactElement => {
 
   return (
     <View style={styles.tabs}>
-      {Object.values(tabValue).map(value => (
+      {Object.values(TabValue).map(value => (
         <View key={value} style={styles.tab}>
           <Button disabled={active === value} title={value} onPress={handleValueChange(value)} />
         </View>

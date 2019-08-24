@@ -1,6 +1,11 @@
 import { StyleSheet } from 'react-native'
 
-export const blue = '#1C97F3'
+export const colors = {
+  black: '#000000',
+  blue: '#1C97F3',
+  green: '#00FF00',
+  red: '#FF0000',
+}
 
 export default StyleSheet.create({
   row: {

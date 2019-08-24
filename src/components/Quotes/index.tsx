@@ -4,7 +4,7 @@ import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from 'react-nat
 import { withNavigationFocus } from 'react-navigation'
 
 import { Quote, QuotesStore } from '../../stores/QuotesStore'
-import { blue } from '../styles'
+import { colors } from '../styles'
 import TableBody from './TableBody'
 import TableHead from './TableHead'
 import Tabs from './Tabs'
@@ -20,10 +20,10 @@ interface State {
   loaded: boolean,
   loading: boolean,
   quotes: Quote[],
-  tabValue: tabValue,
+  tabValue: TabValue,
 }
 
-export enum tabValue {
+export enum TabValue {
   BTC = 'BTC',
   USDT = 'USDT',
   ETH = 'ETH',
@@ -38,7 +38,7 @@ export const Quotes = inject('store')(observer((props: Props): ReactElement => {
     loaded: false,
     loading: false,
     quotes: [] as Quote[],
-    tabValue: tabValue.BTC,
+    tabValue: TabValue.BTC,
   })
 
   const { quotes, loading, error, loaded, loadData } = props.store
@@ -52,7 +52,7 @@ export const Quotes = inject('store')(observer((props: Props): ReactElement => {
     }
   }, [props.isFocused])
 
-  const handleTabChange = (value: tabValue): (() => void) => (): void => {
+  const handleTabChange = (value: TabValue): (() => void) => (): void => {
     setState(prevState => ({ ...prevState, tabValue: value }))
   }
 
@@ -62,7 +62,7 @@ export const Quotes = inject('store')(observer((props: Props): ReactElement => {
       {quotes.length !== 0 && <View style={styles.tableHead}><TableHead /></View>}
       {error && <View style={styles.errorView}><Text style={styles.errorText}>Error</Text></View>}
       {loading
-        ? <ActivityIndicator style={styles.spinner} size="large" color={blue}/>
+        ? <ActivityIndicator style={styles.spinner} size="large" color={colors.blue}/>
         : <ScrollView style={styles.scrollView}>
             <View style={styles.tableContainer}>
               <TableBody
@@ -79,7 +79,7 @@ export default withNavigationFocus(Quotes)
 
 const styles = StyleSheet.create({
   errorText: {
-    color: 'red',
+    color: colors.red,
     fontSize: 20,
   },
   errorView: {
@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
   },
   spinner: {
     margin: '50%',
+    marginTop: '70%',
   },
   tableContainer: {
     alignItems: 'center',
@@ -101,6 +102,6 @@ const styles = StyleSheet.create({
   },
   tableHead: {
     margin: 5,
-    marginBottom: 20,
+    minHeight: 40,
   },
 })

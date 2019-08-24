@@ -2,7 +2,8 @@ import React, { Fragment, ReactElement } from 'react'
 import { StyleSheet, Text, TextStyle, View } from 'react-native'
 
 import { Quote } from '../../stores/QuotesStore'
-import commonStyles from '../styles'
+import commonStyles, { colors } from '../styles'
+import AnimatedText from './AnimatedText'
 
 export default ({ quotes }: { quotes: Quote[] }): ReactElement => {
 
@@ -27,14 +28,14 @@ export default ({ quotes }: { quotes: Quote[] }): ReactElement => {
             </Text>
           </View>
           <View style={[styles.cell, styles.priceCell]}>
-            <Text style={styles.text}>
+            <AnimatedText>
               {parsePrice(quote.last)}
-            </Text>
+            </AnimatedText>
           </View>
           <View style={[styles.cell, styles.priceCell]}>
-            <Text style={styles.text}>
+            <AnimatedText>
               {parsePrice(quote.highestBid)}
-            </Text>
+            </AnimatedText>
           </View>
           <View style={[styles.cell, styles.percentCell]}>
             <Text style={[styles.text, percentStyle(quote.percentChange)]}>
@@ -57,10 +58,10 @@ export const styles = StyleSheet.create({
     flex: 0.6,
   },
   percentNegative: {
-    color: 'red',
+    color: colors.red,
   },
   percentPositive: {
-    color: 'green',
+    color: colors.green,
   },
   priceCell: {
     alignItems: 'flex-end',
