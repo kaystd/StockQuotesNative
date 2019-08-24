@@ -2,6 +2,7 @@ import { inject, observer } from 'mobx-react'
 import React, { ReactElement, useEffect, useState } from 'react'
 import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { withNavigationFocus } from 'react-navigation'
+import { SubscriptionLike, timer } from 'rxjs'
 
 import { Quote, QuotesStore } from '../../stores/QuotesStore'
 import { colors } from '../styles'
@@ -41,14 +42,15 @@ export const Quotes = inject('store')(observer((props: Props): ReactElement => {
     tabValue: TabValue.BTC,
   })
 
-  const { quotes, loading, error, loaded, loadData } = props.store
+  const { quotes, loading, error, loadData } = props.store
+
+  let subscription: SubscriptionLike
 
   useEffect(() => {
     if (props.isFocused) {
-      loaded ? loadData() : loadData(true)
-      setState(prevState => ({ ...prevState, interval: setInterval(loadData, 5000) }))
+      subscription = timer(0, 5000).subscribe(() => loadData())
     } else {
-      clearInterval(state.interval)
+      if (subscription) { subscription.unsubscribe() }
     }
   }, [props.isFocused])
 

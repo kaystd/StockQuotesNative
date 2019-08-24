@@ -1,4 +1,4 @@
-import {action, IObservableArray, observable} from 'mobx'
+import { action, IObservableArray, observable } from 'mobx'
 
 export interface Quote {
   highestBid: string,
@@ -22,8 +22,8 @@ export class QuotesStore {
   @observable public error: string | null = null
 
   @action
-  public loadData = (withSpinner: boolean = false): void => {
-    if (withSpinner) { this.loading = true }
+  public loadData = (): void => {
+    if (!this.loaded) { this.loading = true }
     fetch('https://poloniex.com/public?command=returnTicker')
       .then(response => response.status === 200
         ? response.json()
