@@ -8,6 +8,7 @@
     "quotemark": [true, "single", "jsx-double"],
     "interface-name": false,
     "semicolon": [true, "never"],
-    "typedef": [true, "call-signature", "arrow-call-signature", "parameter"]
+    "typedef": [true, "call-signature", "arrow-call-signature", "parameter"],
+    "no-unused-expression": [true, "allow-fast-null-checks"]
   }
 }

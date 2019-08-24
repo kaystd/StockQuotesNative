@@ -22,6 +22,7 @@ interface State {
   loading: boolean,
   quotes: Quote[],
   tabValue: TabValue,
+  subscription: SubscriptionLike | null,
 }
 
 export enum TabValue {
@@ -39,18 +40,20 @@ export const Quotes = inject('store')(observer((props: Props): ReactElement => {
     loaded: false,
     loading: false,
     quotes: [] as Quote[],
+    subscription: null,
     tabValue: TabValue.BTC,
   })
 
   const { quotes, loading, error, loadData } = props.store
 
-  let subscription: SubscriptionLike
-
   useEffect(() => {
     if (props.isFocused) {
-      subscription = timer(0, 5000).subscribe(() => loadData())
+      setState(prev => ({
+        ...prev,
+        subscription: timer(0, 5000).subscribe(() => loadData())
+      }))
     } else {
-      if (subscription) { subscription.unsubscribe() }
+      state.subscription && state.subscription.unsubscribe()
     }
   }, [props.isFocused])
 
